@@ -24,8 +24,8 @@ public interface MovieRepositiory extends JpaRepository<Movie, Integer> {
 
     //List<Movie> FindAll();
 
-    @Query("SELECT m.title FROM Movie m WHERE m.year BETWEEN :start AND :end")
-    List<String> findTitlesByYearRange(@Param("start") Integer startYear, @Param("end") Integer endYear);
+    @Query("SELECT m.title FROM Movie m WHERE m.year BETWEEN 2002 AND 2007")
+    List<String> findTitlesByYearRange();
 
     @Query("SELECT m.rate FROM Movie m")
     List<Float> findRate();
