@@ -1,6 +1,6 @@
-package kata.jpa.sandra.modules;
+package com.kata.springDataJpa.modules;
 
-import kata.jpa.sandra.enums.Genres;
+import com.kata.springDataJpa.enums.Genres;
 import javax.persistence.*;
 
 @Entity

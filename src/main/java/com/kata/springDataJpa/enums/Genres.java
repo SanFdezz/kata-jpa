@@ -1,4 +1,4 @@
-package kata.jpa.sandra.enums;
+package com.kata.springDataJpa.enums;
 
 public enum Genres {
     ACTION,

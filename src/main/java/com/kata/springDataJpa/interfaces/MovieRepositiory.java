@@ -2,20 +2,32 @@ package com.kata.springDataJpa.interfaces;
 
 import com.kata.springDataJpa.enums.Genres;
 import com.kata.springDataJpa.modules.Movie;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-public interface JpaRepositiory {
+@Repository
+public interface MovieRepositiory extends JpaRepository<Movie, Integer> {
 
-    // busqueda por id
-    List<Movie> findById(Integer id);
-    // busqueda por titulo
     List<Movie> findByTitle(String title);
-    // busqueda por título o género
-    List<Movie> findBysdfOrGenre(String title,Genres genre);
-    // busqueda por t
-    List<Movie> findByYear(Integer year);
-    List<Movie> findByRate(Float rate);
-    List<Movie> findBySinopsis(String sinopsis);
+
+    List<Movie> findByTitleOrGenre(String title,Genres genre);
+
+    List<Movie> findByTitleAndYear(String title,Integer year);
+
+    List<Movie> findByRateGreaterThan(Integer rate);
+
+    List<Movie> findByYearBetween(Integer year, Integer year2);
+
+    //List<Movie> FindAll();
+
+    @Query("SELECT m.title FROM Movie m WHERE m.year BETWEEN :start AND :end")
+    List<String> findTitlesByYearRange(@Param("start") Integer startYear, @Param("end") Integer endYear);
+
+    @Query("SELECT m.rate FROM Movie m")
+    List<Float> findRate();
 
 }
